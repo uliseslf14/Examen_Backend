@@ -1,0 +1,30 @@
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+{% for message in messages %}
+	<p>{{ message }}</p>
+{% endfor %}
+{% endif %}
+{% endwith %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>AUTENTICACION</title>
+</head>
+<body>
+	<h1>Registro</h1>
+	<form action="/auth/register" name="register_form" method="POST">
+		<input name="name" type="text" placeholder="Nombre" required>
+		<input name="email" type="email" placeholder="Correo" required>
+		<input name="password" type="password" placeholder="Contraseña" required>
+		<input type="submit" value="Enviar">
+	</form>
+	<h1>Ingresar</h1>
+	<form action="/auth/login" name="lgin_form" method="POST">
+		<input name="email" type="email" placeholder="Correo" required>
+		<input name="password" type="password" placeholder="Contraseña" required>
+		<input type="submit" value="Enviar">
+	</form>
+</body>
+</html>

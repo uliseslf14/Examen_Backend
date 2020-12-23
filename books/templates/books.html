@@ -1,0 +1,48 @@
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+{% for message in messages %}
+	<p>{{ message }}</p>
+{% endfor %}
+{% endif %}
+{% endwith %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>LIBROS</title>
+</head>
+<body>
+	<h2>Ingresa un libro</h2>
+	<form action="/books_saved" method="POST">
+		<input type="text" name="isbn" placeholder="ISBN"><br>
+		<input type="text" name="title" placeholder="Titulo"><br>
+		<input type="text" name="author" placeholder="Autor"><br>
+		<input type="datetime_local" name="release_date" placeholder="Fecha de Publicación"><br>
+		<input type="submit" value="Enviar">
+	</form>
+
+	<table>
+		<thead>
+			<tr>
+				<td>ISBN</td>
+				<td>Titulo</td>
+				<td>Autor</td>
+				<td>Fecha de Libreación</td>
+				<td>DELETE</td>
+			</tr>
+		</thead>
+		<tbody>
+		{%for book in books%}
+			<tr>
+			   <td>{{book.1}}</td>
+			   <td>{{book.2}}</td>
+			   <td>{{book.3}}</td>
+			   <td>{{book.4}}</td>
+			   <td><a href="/delete/{{book.0}}">Eliminar</a></td>
+			</tr>
+		{%endfor%}
+		</tbody>
+	</table>	
+</body>
+</html>
